@@ -6,7 +6,7 @@ const SUBS = [
   {
     usuario: "S00YAA",
     frase: "Estuve aquí antes de que todo fuera historia.",
-    foto: "",
+    foto: "S00YAA.jpg.webp",
     fecha: "Desde que empezó todo..."
   },
   {
