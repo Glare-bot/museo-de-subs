@@ -4,10 +4,10 @@
 
 const SUBS = [
   {
-    usuario: "chatter_001",
+    usuario: "S00YAA",
     frase: "Estuve aquí antes de que todo fuera historia.",
     foto: "",
-    fecha: "Miembro fundador"
+    fecha: "Desde que empezó todo..."
   },
   {
     usuario: "elpepe",
