@@ -1,248 +1,152 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#10100f">
-  <meta name="description" content="Un museo digital para los miembros de nuestra comunidad.">
-  <title>Museo del Chat — Archivo de Leyendas</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100e0d">
+  <title>Museo de leanmto · Archivo de Subs</title>
+  <meta name="description" content="Retratos, frases y leyendas del chat de leanmto en Kick.">
   <style>
-:root {
-  --bg: #11100e;
-  --panel: #1b1915;
-  --ink: #e9dfc9;
-  --dim: #978d7c;
-  --gold: #b7a178;
-  --line: #3b352b;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: Georgia, 'Times New Roman', serif; }
-button, input { font: inherit; }
-a { color: inherit; text-decoration: none; }
-button { cursor: pointer; }
-::selection { background: var(--gold); color: #1a1712; }
-.page-grain { position: fixed; inset: 0; pointer-events: none; opacity: .13; z-index: 15; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E"); }
-.site-header { height: 76px; padding: 0 clamp(22px,5vw,80px); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
-.wordmark { font-size: 27px; letter-spacing: -.08em; font-weight: bold; }
-.wordmark-star { font-size: 13px; color: var(--gold); display: inline-block; vertical-align: middle; margin: 0 4px; }
-.wordmark-small { font-family: Arial,sans-serif; letter-spacing: .23em; font-size: 9px; font-weight: 400; color: var(--dim); margin-left: 12px; }
-.header-right, .eyebrow, .hero-eyebrow, .hero-bottom, .collection-meta, .portrait-plaque span, .site-footer, .modal-id, .modal-date, .artwork-label { font: 10px Arial, sans-serif; letter-spacing: .21em; }
-.header-right { color: var(--dim); }
-.hero { position: relative; min-height: min(800px, 87vh); padding: 80px clamp(22px,5vw,80px) 37px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(ellipse 45% 60% at 50% 47%,#27221a 0%,transparent 80%),linear-gradient(90deg,rgba(183,161,120,.06) 1px,transparent 1px); background-size:auto,calc(100% / 6) 100%; border-bottom: 1px solid var(--line); }
-.hero::before,.hero::after { content: '✧'; position: absolute; top: 43%; font-size: 26px; color: #635746; }
-.hero::before { left: 8%; } .hero::after { right: 8%; }
-.hero-eyebrow { display:flex; gap: 17px; align-items:center; justify-content:center; color:var(--gold); font-size:10px; }
-.hero-eyebrow .line { height:1px; width:42px; background:var(--gold); opacity:.6; }
-.hero-symbol { color: var(--gold); margin: 32px 0 9px; font-size: 26px; }
-h1 { font-size: clamp(72px, 12.7vw, 185px); line-height: .83; font-weight: 400; letter-spacing: -.092em; margin: 0; text-shadow: 0 5px 35px #080705; }
-h1 em { font-weight: normal; font-size:.43em; letter-spacing:-.04em; vertical-align: .19em; margin-left:.11em; }
-.period { color:var(--gold); }
-.hero-intro { margin: 43px 0 0; color:#b8aa90; line-height:1.8; font-size: clamp(14px,1.3vw,18px); font-style:italic; }
-.hero-bottom { position:absolute; left: clamp(22px,5vw,80px); right: clamp(22px,5vw,80px); bottom: 33px; display:flex; align-items:center; justify-content:space-between; color:var(--dim); }
-.down-link { border-bottom:1px solid var(--gold); color:var(--ink); padding-bottom:10px; transition: color .2s; }
-.down-link:hover { color:var(--gold); }
-.down-link span { margin-left:12px; font-size:17px; }
-.collection { max-width: 1600px; margin:0 auto; padding: 105px clamp(22px,5vw,80px) 140px; }
-.section-heading { display:flex; justify-content:space-between; align-items:end; gap:30px; padding-bottom: 27px; border-bottom: 1px solid var(--line); }
-.eyebrow { color:var(--gold); margin:0 0 15px; }
-h2 { font-size: clamp(42px,5vw,71px); font-weight:normal; letter-spacing:-.055em; margin:0; line-height:1.08; }
-h2 em { color:var(--gold); font-weight:normal; }
-.collection-meta { display:flex; flex-direction:column; align-items:flex-end; gap:20px; color:var(--dim); }
-.search-wrap { width: 248px; display:flex; gap:9px; align-items:center; border-bottom:1px solid #766a55; padding:0 0 10px; }
-.search-wrap span { font-size:19px; }
-.search-wrap input { border:0; outline:0; background:transparent; color:var(--ink); width:100%; min-width:0; font:12px Arial,sans-serif; letter-spacing:.03em; }
-.search-wrap input::placeholder { color:#948774; }
-.gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap: clamp(26px,4vw,65px) clamp(18px,4vw,62px); padding-top: 50px; }
-.portrait-card { border:0; background:transparent; color:var(--ink); padding:0; text-align:left; min-width:0; }
-.portrait-frame { border: 8px ridge #9b7f51; padding: 10px; background:linear-gradient(145deg,#b19a6d 0%,#3e3020 30%,#9b8358 52%,#352a1d 74%,#d3ba81 100%); box-shadow: 7px 10px 0 #080807, 8px 14px 26px #000a, inset 0 0 0 2px #2a2117; transition:transform .25s ease, box-shadow .25s ease; }
-.portrait-card:hover .portrait-frame,.portrait-card:focus-visible .portrait-frame { transform:translateY(-7px); box-shadow:7px 17px 0 #080807, 8px 23px 30px #000b,inset 0 0 0 2px #2a2117; }
-.portrait-card:focus-visible { outline: 2px solid var(--gold); outline-offset: 9px; }
-.portrait-mat { padding: 12px; background:#0d0c0a; box-shadow:inset 0 0 0 1px #8f7850; }
-.artwork { position:relative; aspect-ratio: 4/5; overflow:hidden; display:flex; align-items:center; justify-content:center; background: radial-gradient(ellipse at 48% 28%,#6d5944 0%, #40352a 28%,#221e19 63%,#0d0d0c 100%); }
-.artwork::before { content:''; position:absolute; z-index:1; inset:0; box-shadow:inset 0 0 80px #000d; pointer-events:none; }
-.artwork::after { content:'✦'; position:absolute; top:8%; left:12%; font-size:20px; opacity:.25; }
-.placeholder-initial { font-size:clamp(95px,15vw,210px); line-height:1; color:#a9936d; text-shadow: 0 4px 25px #130d08; opacity:.8; }
-.artwork img { position:absolute; width:100%; height:100%; object-fit:cover; }
-.artwork-label { position:absolute; z-index:2; bottom:14px; right:14px; color:#d2c2a4; background:#17120ebb; padding:8px 10px; }
-.portrait-plaque { padding:22px 2px 0; display:flex; align-items:baseline; gap:8px; justify-content:space-between; }
-.portrait-plaque strong { font-size:clamp(18px,2.1vw,26px); font-weight:normal; overflow-wrap:anywhere; }
-.portrait-plaque span { flex:0 0 auto; color:var(--gold); font-size:9px; }
-.empty-message { text-align:center; padding:60px 15px; color:var(--dim); font-style:italic; }
-.site-footer { min-height:120px; display:flex; align-items:center; justify-content:space-between; gap:20px; border-top:1px solid var(--line); padding:25px clamp(22px,5vw,80px); color:var(--dim); }
-.site-footer a { color:var(--gold); }
-.modal { background:linear-gradient(150deg,#272219,#171511 65%); color:var(--ink); border:1px solid #877450; width:min(520px,calc(100% - 30px)); padding:65px 35px 42px; text-align:center; box-shadow:0 30px 90px #000b; }
-.modal::backdrop { background:#050403df; backdrop-filter:blur(6px); }
-.modal-close { position:absolute; right:17px; top:16px; background:transparent; color:var(--ink); border:0; font:20px Arial,sans-serif; padding:7px; }
-.modal-mark { color:var(--gold); font-size:34px; margin:30px 0; }
-.modal h2 { font-size:clamp(28px,6vw,46px); overflow-wrap:anywhere; }
-.modal-rule { width:75px; height:1px; background:var(--gold); margin:28px auto; }
-.modal blockquote { margin:0 0 32px; font-size:clamp(22px,4vw,29px); font-style:italic; line-height:1.5; overflow-wrap:anywhere; }
-.modal-date { color:var(--gold); margin:0 0 65px; }
-.modal-id { color:var(--dim); font-size:9px; }
-@media (max-width: 900px) { .gallery { grid-template-columns:repeat(2,minmax(0,1fr)); } .portrait-plaque { flex-direction:column; gap:9px; } .hero::before,.hero::after { display:none; } }
-@media (max-width: 600px) { .site-header { height:62px; } .header-right { font-size:8px; text-align:right; max-width:120px; } .wordmark-small { display:none; } .hero { min-height: 660px; padding-top:60px; padding-bottom:110px; } h1 { font-size:clamp(65px,16vw,100px); } .hero-eyebrow { font-size:8px; } .hero-bottom { bottom:25px; flex-wrap:wrap; gap:23px; justify-content:center; } .hero-bottom>span { display:none; } .collection { padding-top:80px; padding-bottom:90px; } .section-heading { display:block; } .collection-meta { align-items:flex-start; margin-top:28px; } .gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:37px 14px; padding-top:34px; } .portrait-frame { border-width:5px; padding:5px; box-shadow:3px 6px 0 #080807; } .portrait-mat { padding:5px; } .placeholder-initial { font-size:80px; } .portrait-plaque { padding-top:13px; } .portrait-plaque strong { font-size:16px; } .portrait-plaque span { font-size:8px; } .artwork-label { font-size:8px; padding:5px; bottom:6px; right:6px; } .site-footer { flex-direction:column; align-items:flex-start; min-height:0; gap:16px; } }
-@media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto !important; transition:none !important; } }
-
-</style>
-
+    :root { --bg:#100e0d; --bg2:#171411; --panel:#1e1914; --ink:#e7ddcb; --dim:#9c917f; --gold:#c6aa6f; --line:#554735; --red:#aa5d53; }
+    * { box-sizing:border-box } html { scroll-behavior:smooth }
+    body { margin:0; background:var(--bg); color:var(--ink); font-family:Georgia,'Times New Roman',serif; }
+    ::selection { background:var(--gold); color:#100e0d }
+    a { color:inherit; text-decoration:none } button,input { font:inherit }
+    button { cursor:pointer }
+    button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var(--gold); outline-offset:5px }
+    .grain { position:fixed;inset:0;pointer-events:none;opacity:.14;z-index:20;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.2' filter='url(%23n)'/%3E%3C/svg%3E") }
+    .mast { display:flex;align-items:center;justify-content:space-between;gap:16px;padding:21px clamp(20px,5vw,80px);border-bottom:1px solid #3b3025; }
+    .brand { font-size:25px;font-weight:bold;letter-spacing:-.07em }
+    .brand i { font-size:15px;font-style:normal;color:var(--gold);margin:0 6px }
+    .small { color:var(--dim);font:10px Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase }
+    .mast .small a { color:var(--gold);border-bottom:1px solid var(--gold) }
+    .hero { min-height:510px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding:80px 20px 100px;border-bottom:1px solid #3b3025;background:radial-gradient(ellipse at center,#33291f 0%,#16120f 53%,#100e0d 83%);overflow:hidden }
+    .hero::before,.hero::after { content:'✧';position:absolute;top:40%;color:#5b4a36;font-size:40px } .hero::before { left:10% }.hero::after { right:10% }
+    .overline { color:var(--gold);font:11px Arial,sans-serif;letter-spacing:.3em; }
+    .ornament { margin:28px 0 15px;font-size:30px;color:var(--gold) }
+    h1 { font-size:clamp(63px,11vw,150px);letter-spacing:-.08em;font-weight:normal;line-height:.87;margin:0;text-shadow:0 12px 40px #0008 }
+    h1 em { display:block;font-size:.27em;letter-spacing:.06em;font-style:normal;margin-top:29px;color:var(--gold) }
+    .intro { max-width:640px;margin:30px auto 20px;color:#c8b9a0;font-size:clamp(15px,1.45vw,19px);line-height:1.7;font-style:italic }
+    .instructions { margin-top:10px;border:1px solid #695437;padding:16px 22px;max-width:720px;background:#0f0e0bc9;line-height:1.65;color:#d9c7a9; }
+    .instructions code { font:600 15px Consolas,monospace;color:#f2d89e; }
+    main { max-width:1600px;margin:auto }
+    .collection { padding:90px clamp(20px,5vw,80px) 85px; }
+    .section-top { display:flex;justify-content:space-between;align-items:end;gap:20px;border-bottom:1px solid #594b35;padding-bottom:28px; }
+    .eyebrow { font:10px Arial,sans-serif;color:var(--gold);letter-spacing:.25em;margin:0 0 13px; }
+    h2 { font-size:clamp(36px,5vw,63px);font-weight:normal;letter-spacing:-.045em;margin:0 }
+    h2 i { color:var(--gold);font-weight:normal }
+    .tools { display:flex;flex-direction:column;gap:16px;align-items:end }
+    #counter { font:11px Arial,sans-serif;letter-spacing:.15em;color:var(--dim) }
+    .search { border-bottom:1px solid #796744;display:flex;gap:10px;align-items:center;width:min(260px,100%);padding:0 0 9px }
+    .search input { background:none;color:var(--ink);border:0;outline:0;width:100%;font:13px Arial,sans-serif }
+    .search input::placeholder { color:#8c8070 }
+    .group-label { margin:65px 0 7px;display:flex;gap:17px;align-items:center;color:var(--gold);font:11px Arial,sans-serif;letter-spacing:.22em }
+    .group-label::after { content:'';height:1px;background:#554532;flex:1 }
+    .grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:42px clamp(20px,4.5vw,70px);padding-top:27px; }
+    .card { min-width:0; padding:0;background:transparent;border:0;text-align:left;color:inherit; }
+    .frame { border:9px ridge #8f754d;padding:10px;background:linear-gradient(130deg,#bfa676 0%,#3a2b1b 25%,#9c7f4f 49%,#302316 72%,#d5bc88 100%);box-shadow:7px 12px 0 #080706,0 20px 45px #0007,inset 0 0 0 2px #241c13;transition:transform .25s,box-shadow .25s; }
+    .card:hover .frame,.card:focus-visible .frame { transform:translateY(-6px);box-shadow:7px 20px 0 #080706,0 28px 45px #000a,inset 0 0 0 2px #241c13 }
+    .card.vip .frame { border-color:#aa665a;background:linear-gradient(135deg,#b67769,#3a2022 25%,#ab6d62 52%,#2b191b 70%,#da9e90) }
+    .mat { background:#090808;padding:12px;box-shadow:inset 0 0 0 1px #91764e }
+    .art { background:radial-gradient(ellipse at 50% 20%,#68513b,#26201a 50%,#0b0a09 100%);aspect-ratio:4/5;position:relative;overflow:hidden;display:grid;place-items:center }
+    .art::after { content:'';position:absolute;inset:0;box-shadow:inset 0 0 80px #000b;pointer-events:none }
+    .art img { height:100%;width:100%;object-fit:cover;position:absolute;inset:0; }
+    .initial { color:#be9e68;opacity:.8;font-size:clamp(85px,14vw,190px) }
+    .art .art-tag { position:absolute;bottom:10px;right:10px;background:#17110ee6;color:#e3d2b5;padding:7px 9px;font:9px Arial,sans-serif;letter-spacing:.13em;z-index:2 }
+    .plaque { display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:20px 2px 0 }
+    .plaque strong { font-size:clamp(18px,2vw,26px);font-weight:normal;overflow-wrap:anywhere }
+    .plaque small { color:var(--gold);font:10px Arial,sans-serif;letter-spacing:.1em;white-space:nowrap }
+    .empty { padding:40px 15px 5px;font-size:18px;font-style:italic;color:#bba987;line-height:1.65;text-align:center }
+    .notice { margin:24px 0 0;color:#d9bdb7;background:#39221f;border:1px solid #7d4b43;padding:14px 18px;font:13px Arial,sans-serif;line-height:1.5 }
+    .footer { padding:32px clamp(20px,5vw,80px);border-top:1px solid #3b3025;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap }
+    .footer a { color:var(--gold) }
+    dialog { box-shadow:0 25px 70px #000c;background:linear-gradient(150deg,#30271d,#15110f);color:var(--ink);border:1px solid var(--gold);padding:55px 24px 42px;width:min(490px,calc(100% - 30px));text-align:center }
+    dialog::backdrop { background:#050403df;backdrop-filter:blur(5px) }
+    .close { position:absolute;right:12px;top:12px;background:none;color:var(--ink);border:0;font:25px Arial,sans-serif }
+    .modal-image { height:120px;width:120px;border:5px ridge var(--gold);object-fit:cover;display:none;margin:0 auto 20px }
+    #modal-name { font-size:clamp(31px,6vw,48px);overflow-wrap:anywhere;margin:12px 0 25px }
+    #modal-quote { font-size:clamp(20px,4vw,27px);line-height:1.5;font-style:italic;margin:18px 0 28px;white-space:pre-wrap;overflow-wrap:anywhere }
+    .modal-role { color:var(--gold);letter-spacing:.2em;font:10px Arial,sans-serif }
+    .rule { width:70px;height:1px;background:var(--gold);margin:auto }
+    @media(max-width:920px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero::before,.hero::after{display:none}}
+    @media(max-width:590px){.mast{padding:18px 20px}.mast .small{font-size:8px}.hero{min-height:560px;padding:70px 20px 85px}.section-top{display:block}.tools{align-items:start;margin-top:20px}.collection{padding-top:65px}.grid{gap:37px 15px}.frame{border-width:5px;padding:5px;box-shadow:3px 7px 0 #080706}.mat{padding:5px}.plaque{flex-direction:column;padding-top:14px;gap:7px}.plaque strong{font-size:17px}.plaque small{font-size:9px}.art .art-tag{font-size:8px;padding:4px;bottom:5px;right:5px}.initial{font-size:85px}.group-label{margin-top:40px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+  </style>
 </head>
 <body>
-  <div class="page-grain" aria-hidden="true"></div>
-  <header class="site-header">
-    <a class="wordmark" href="#inicio" aria-label="Ir al inicio">M<span class="wordmark-star">✳</span>C <span class="wordmark-small">/ ARCHIVO</span></a>
-    <span class="header-right">COLECCIÓN DIGITAL · EST. 2026</span>
-  </header>
-
-  <main id="inicio">
-    <section class="hero" aria-labelledby="titulo">
-      <div class="hero-eyebrow"><span class="line"></span> SALA DE EXPOSICIÓN Nº 001 <span class="line"></span></div>
-      <div class="hero-symbol" aria-hidden="true">✦</div>
-      <h1 id="titulo">MUSEO <em>DEL</em><br>CHAT<span class="period">.</span></h1>
-      <p class="hero-intro">Un lugar para quienes estuvieron ahí.<br>Un retrato. Un nombre. Una frase para la eternidad.</p>
-      <div class="hero-bottom">
-        <span>LOS QUE HICIERON HISTORIA</span>
-        <a href="#coleccion" class="down-link">EXPLORAR COLECCIÓN <span aria-hidden="true">↘</span></a>
-        <span>ACCESO PÚBLICO / 24—7</span>
-      </div>
-    </section>
-
-    <section class="collection" id="coleccion" aria-labelledby="coleccion-titulo">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">GALERÍA PRINCIPAL / 01</p>
-          <h2 id="coleccion-titulo">Retratos <em>inmortales</em></h2>
-        </div>
-        <div class="collection-meta">
-          <span id="contador" aria-live="polite">0 OBRAS EN EXHIBICIÓN</span>
-          <label class="search-wrap" for="busqueda">
-            <span aria-hidden="true">⌕</span>
-            <input id="busqueda" type="search" placeholder="Buscar un usuario..." autocomplete="off">
-          </label>
-        </div>
-      </div>
-      <div class="gallery" id="galeria" aria-live="polite"></div>
-      <p id="vacio" class="empty-message" hidden>No encontramos ese nombre entre los retratos.</p>
-    </section>
-  </main>
-
-  <footer class="site-footer"><span>MUSEO DEL CHAT © 2026</span><span>LA MEMORIA DEL STREAM NO SE BORRA.</span><a href="#inicio">VOLVER ARRIBA ↑</a></footer>
-
-  <dialog id="ficha" class="modal" aria-labelledby="ficha-usuario">
-    <button class="modal-close" id="cerrar" aria-label="Cerrar ficha">✕</button>
-    <p class="eyebrow">ARCHIVO PERSONAL · FICHA DEL RETRATO</p>
-    <p class="modal-mark" aria-hidden="true">✦</p>
-    <h2 id="ficha-usuario"></h2>
-    <div class="modal-rule"></div>
-    <blockquote id="ficha-frase"></blockquote>
-    <p id="ficha-fecha" class="modal-date"></p>
-    <span class="modal-id">MUSEO DEL CHAT / COLECCIÓN PERMANENTE</span>
-  </dialog>
-<!-- Si subs.js existe, se usa para cargar el listado real. Si no, se muestran los 3 ejemplos. -->
-<script src="subs.js"></script>
+<div class="grain" aria-hidden="true"></div>
+<header class="mast"><a class="brand" href="#inicio">M<i>✦</i>S</a><span class="small">Archivo comunitario · <a href="https://kick.com/leanmto" target="_blank" rel="noopener noreferrer">Kick / leanmto ↗</a></span></header>
+<main id="inicio">
+  <section class="hero" aria-labelledby="title">
+    <div class="overline">ARCHIVO DE LEYENDAS · 2026</div><div class="ornament" aria-hidden="true">✧</div>
+    <h1 id="title">MUSEO<em>DE LOS SUBS & VIPS</em></h1>
+    <p class="intro">Un lugar para los que dejaron su marca en el chat de leanmto.<br>Cada retrato, un nombre. Cada nombre, una historia.</p>
+    <div class="instructions">Para reclamar tu retrato, escribí en el chat de <strong>leanmto</strong>:<br><code>!museo La frase que quieras dejar para siempre</code><br><span class="small">Solo subs y VIPs · También podés usar !museo solo</span></div>
+  </section>
+  <section class="collection" id="coleccion">
+    <div class="section-top"><div><p class="eyebrow">001 / EXPOSICIÓN PERMANENTE</p><h2>Los <i>inmortalizados.</i></h2></div><div class="tools"><span id="counter" aria-live="polite">CARGANDO REGISTROS...</span><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar un nombre..." aria-label="Buscar un usuario"></label></div></div>
+    <p id="notice" class="notice" hidden></p>
+    <div class="group-label" id="vip-title" hidden>SALA I · VIPS</div><div class="grid" id="vip-gallery"></div>
+    <div class="group-label" id="sub-title" hidden>SALA II · SUBS</div><div class="grid" id="sub-gallery"></div>
+    <p id="empty" class="empty">Cargando retratos...</p>
+  </section>
+</main>
+<footer class="footer small"><span>MUSEO DE LEANMTO · COLECCIÓN DIGITAL</span><span>Escribí <strong>!museo</strong> en <a href="https://kick.com/leanmto" target="_blank" rel="noopener noreferrer">Kick ↗</a></span></footer>
+<dialog id="portrait-dialog" aria-labelledby="modal-name"><button class="close" id="modal-close" aria-label="Cerrar ventana">×</button><img id="modal-image" class="modal-image" alt=""><span id="modal-role" class="modal-role"></span><h2 id="modal-name"></h2><div class="rule"></div><blockquote id="modal-quote"></blockquote><span class="small" id="modal-date"></span></dialog>
+<!-- Para conservar tus subs manuales, este archivo sigue leyendo tu subs.js anterior. -->
+<script src="./subs.js"></script>
 <script>
-const DATOS_DE_EJEMPLO = [
-  {
-    usuario: "chatter_001",
-    frase: "Estuve aquí antes de que todo fuera historia.",
-    foto: "",
-    fecha: "Miembro fundador"
-  },
-  {
-    usuario: "elpepe",
-    frase: "No fui un héroe. Fui un mensaje en el chat.",
-    foto: "",
-    fecha: "Generación 2026"
-  },
-  {
-    usuario: "leyenda_del_chat",
-    frase: "Mi legado son los mensajes que nunca borré.",
-    foto: "",
-    fecha: "Generación 2026"
+  // CAMBIAR SOLO ESTA LINEA AL TERMINAR DE CONFIGURAR CLOUDFLARE:
+  const API_URL = 'PEGAR_AQUI_LA_URL_DEL_WORKER';
+
+  const $ = (id) => document.getElementById(id);
+  const safeUrl = (value) => { try { const u = new URL(String(value), location.href); return ['https:','http:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } };
+  const manual = (typeof SUBS !== 'undefined' && Array.isArray(SUBS) ? SUBS : []).map((m,i) => ({
+    id: `manual-${i}`, username: String(m.usuario||'Anónimo'), photo: m.foto||'', quote: m.frase||'Sin frase',
+    role: /vip/i.test(String(m.rol||m.tipo||'')) ? 'vip' : 'sub', claimed_at: m.fecha||'', manual:true
+  }));
+  let items = [...manual];
+  function imageOrInitial(host,src,name) {
+    const initial = document.createElement('span'); initial.className='initial'; initial.textContent=(name||'?').slice(0,1).toUpperCase();host.append(initial);
+    const url=safeUrl(src);if(!url)return;
+    const img=document.createElement('img'); img.alt=`Retrato de ${name}`; img.loading='lazy'; img.referrerPolicy='no-referrer';
+    img.addEventListener('load',()=>{initial.hidden=true});img.addEventListener('error',()=>img.remove());img.src=url;host.append(img);
   }
-];
-const DATOS = (typeof SUBS !== "undefined" && Array.isArray(SUBS)) ? SUBS : DATOS_DE_EJEMPLO;
-
-const galeria = document.getElementById('galeria');
-const contador = document.getElementById('contador');
-const busqueda = document.getElementById('busqueda');
-const vacio = document.getElementById('vacio');
-const ficha = document.getElementById('ficha');
-const cerrar = document.getElementById('cerrar');
-const fichaUsuario = document.getElementById('ficha-usuario');
-const fichaFrase = document.getElementById('ficha-frase');
-const fichaFecha = document.getElementById('ficha-fecha');
-
-function abrirFicha(sub) {
-  fichaUsuario.textContent = '@' + sub.usuario;
-  fichaFrase.textContent = '“' + sub.frase + '”';
-  fichaFecha.textContent = sub.fecha || '';
-  ficha.showModal();
-}
-
-function crearRetrato(sub, indice) {
-  const boton = document.createElement('button');
-  boton.type = 'button';
-  boton.className = 'portrait-card';
-  boton.setAttribute('aria-label', `Abrir retrato de ${sub.usuario}`);
-
-  const frame = document.createElement('div');
-  frame.className = 'portrait-frame';
-  const mat = document.createElement('div');
-  mat.className = 'portrait-mat';
-
-  const artwork = document.createElement('div');
-  artwork.className = 'artwork';
-  const initial = document.createElement('span');
-  initial.className = 'placeholder-initial';
-  initial.textContent = (sub.usuario || '?').charAt(0).toUpperCase();
-  artwork.appendChild(initial);
-
-  if (sub.foto) {
-    const foto = document.createElement('img');
-    foto.src = sub.foto;
-    foto.alt = `Foto de ${sub.usuario}`;
-    foto.loading = 'lazy';
-    foto.onerror = () => { foto.remove(); };
-    artwork.appendChild(foto);
+  function card(m) {
+    const b=document.createElement('button');b.type='button';b.className='card'+(m.role==='vip'?' vip':'');b.setAttribute('aria-label',`Ver el retrato de ${m.username}`);
+    const frame=document.createElement('div');frame.className='frame';const mat=document.createElement('div');mat.className='mat';const art=document.createElement('div');art.className='art';imageOrInitial(art,m.photo,m.username);
+    const tag=document.createElement('span');tag.className='art-tag';tag.textContent=m.role==='vip'?'VIP':'SUB';art.append(tag);mat.append(art);frame.append(mat);
+    const plaque=document.createElement('div');plaque.className='plaque';const n=document.createElement('strong');n.textContent='@'+m.username;const s=document.createElement('small');s.textContent=m.role==='vip'?'✦ VIP':'✧ SUB';plaque.append(n,s);b.append(frame,plaque);
+    b.addEventListener('click',()=>openCard(m));return b;
   }
-
-  const badge = document.createElement('span');
-  badge.className = 'artwork-label';
-  badge.textContent = `Nº ${String(indice + 1).padStart(3, '0')}`;
-  artwork.appendChild(badge);
-  mat.appendChild(artwork);
-  frame.appendChild(mat);
-
-  const plaque = document.createElement('div');
-  plaque.className = 'portrait-plaque';
-  const user = document.createElement('strong');
-  user.textContent = '@' + sub.usuario;
-  const caption = document.createElement('span');
-  caption.textContent = 'VER HISTORIA ↗';
-  plaque.append(user, caption);
-
-  boton.append(frame, plaque);
-  boton.addEventListener('click', () => abrirFicha(sub));
-  return boton;
-}
-
-function dibujar() {
-  const texto = busqueda.value.trim().toLocaleLowerCase();
-  const visibles = DATOS.filter(sub => sub.usuario.toLocaleLowerCase().includes(texto));
-  galeria.replaceChildren(...visibles.map((sub, indice) => crearRetrato(sub, indice)));
-  contador.textContent = `${DATOS.length} ${DATOS.length === 1 ? 'OBRA' : 'OBRAS'} EN EXHIBICIÓN`;
-  vacio.hidden = visibles.length !== 0;
-}
-
-busqueda.addEventListener('input', dibujar);
-cerrar.addEventListener('click', () => ficha.close());
-ficha.addEventListener('click', (evento) => {
-  if (evento.target === ficha) ficha.close();
-});
-
-dibujar();
-
+  function openCard(m) {
+    $('modal-role').textContent=m.role==='vip'?'SALA VIP · ARCHIVO PERMANENTE':'SALA DE SUBS · ARCHIVO PERMANENTE';$('modal-name').textContent='@'+m.username;
+    $('modal-quote').textContent='“'+m.quote+'”';const parsed=Date.parse(m.claimed_at);$('modal-date').textContent=m.claimed_at ? `INGRESO · ${Number.isFinite(parsed) ? new Date(parsed).toLocaleDateString('es-AR',{year:'numeric',month:'long',day:'numeric'}) : m.claimed_at}` : 'UN LEGADO DEL CHAT';
+    const img=$('modal-image'),url=safeUrl(m.photo);img.style.display='none';img.removeAttribute('src');if(url){img.src=url;img.onload=()=>{img.style.display='block'};img.onerror=()=>{img.style.display='none'}};
+    $('portrait-dialog').showModal();
+  }
+  $('modal-close').onclick=()=>$('portrait-dialog').close();$('portrait-dialog').addEventListener('click',e=>{if(e.target===$('portrait-dialog'))e.target.close()});
+  function render() {
+    const term=$('search').value.trim().toLocaleLowerCase();const shown=items.filter(m=>m.username.toLocaleLowerCase().includes(term)||m.quote.toLocaleLowerCase().includes(term));
+    const vips=shown.filter(x=>x.role==='vip');const subs=shown.filter(x=>x.role!=='vip');
+    $('vip-title').hidden=!vips.length;$('sub-title').hidden=!subs.length;
+    $('vip-gallery').replaceChildren(...vips.map(card));$('sub-gallery').replaceChildren(...subs.map(card));
+    $('counter').textContent=`${items.length} RETRATOS EN EL ARCHIVO`;
+    $('empty').hidden=shown.length>0;$('empty').textContent=items.length===0?'La galería está vacía. ¡Sé el primero en escribir !museo en el chat!':'No se encontraron retratos con ese nombre.';
+  }
+  $('search').addEventListener('input',render);
+  async function refresh() {
+    if(!API_URL.startsWith('https://')) {render();return;}
+    try {
+      const r=await fetch(API_URL.replace(/\/$/,'')+'/api/members',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);
+      const data=await r.json();if(!Array.isArray(data.members))throw new Error('Respuesta inesperada');
+      const fromKick=data.members.map(m=>({id:m.user_id,username:String(m.username||'Anónimo'),photo:m.photo||'',quote:String(m.quote||'Sin frase'),role:m.role==='vip'?'vip':'sub',claimed_at:m.claimed_at||''}));
+      // Si un usuario reclamó por Kick, su cuadro reemplaza al manual con el mismo nombre.
+      const realNames=new Set(fromKick.map(x=>x.username.toLocaleLowerCase()));items=[...fromKick,...manual.filter(x=>!realNames.has(x.username.toLocaleLowerCase()))];
+      $('notice').hidden=true;render();
+    } catch(err) { $('notice').hidden=false;$('notice').textContent='El museo no pudo conectarse al registro en vivo. Los cuadros manuales siguen disponibles. Revisá la URL de Cloudflare o la consola.';render(); console.error('Museo API',err); }
+  }
+  render();refresh();setInterval(refresh,30000);
 </script>
 </body>
 </html>
