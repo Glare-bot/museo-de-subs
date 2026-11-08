@@ -1,2 +1,0 @@
-Guardá las fotos de los subs en esta carpeta (por ejemplo, pepe.jpg).
-Después escribí en subs.js: foto: "fotos/pepe.jpg"
