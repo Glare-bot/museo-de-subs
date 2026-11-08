@@ -8,6 +8,8 @@ const SUBS = [
     frase: "Estuve aquí antes de que todo fuera historia. Yo cree esta pagina en las tinieblas...",
     foto: "fotos/1081145454314228199.jpg",
     fecha: "Desde que empezó todo..."
+  }
+];
 // PARA AGREGAR OTRO SUB, copiá un bloque { ... }, pegalo antes del ];
 // y asegurate de separar los bloques con una coma.
 // EJEMPLO:
