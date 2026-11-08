@@ -4,25 +4,10 @@
 
 const SUBS = [
   {
-    usuario: "S00YAA",
-    frase: "Estuve aquí antes de que todo fuera historia.",
-    foto: "fotos/S00YAA.jpg.webp",
+    usuario: "TEO",
+    frase: "Estuve aquí antes de que todo fuera historia. Yo cree esta pagina en las tinieblas...",
+    foto: "fotos/",
     fecha: "Desde que empezó todo..."
-  },
-  {
-    usuario: "elpepe",
-    frase: "No fui un héroe. Fui un mensaje en el chat.",
-    foto: "",
-    fecha: "Generación 2026"
-  },
-  {
-    usuario: "leyenda_del_chat",
-    frase: "Mi legado son los mensajes que nunca borré.",
-    foto: "",
-    fecha: "Generación 2026"
-  }
-];
-
 // PARA AGREGAR OTRO SUB, copiá un bloque { ... }, pegalo antes del ];
 // y asegurate de separar los bloques con una coma.
 // EJEMPLO:
