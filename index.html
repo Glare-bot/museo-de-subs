@@ -97,7 +97,7 @@
 <script src="./subs.js"></script>
 <script>
   // CAMBIAR SOLO ESTA LINEA AL TERMINAR DE CONFIGURAR CLOUDFLARE:
-  const API_URL = 'PEGAR_AQUI_LA_URL_DEL_WORKER';
+  const API_URL = 'https://museo-leanmto-api.museo-leanmto.workers.dev';
 
   const $ = (id) => document.getElementById(id);
   const safeUrl = (value) => { try { const u = new URL(String(value), location.href); return ['https:','http:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } };
