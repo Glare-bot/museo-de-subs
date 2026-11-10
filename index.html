@@ -3,150 +3,545 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0d0e0f">
-  <title>Museo de leanmto · Archivo de Subs</title>
-  <meta name="description" content="Retratos, frases y leyendas del chat de leanmto en Kick.">
+  <meta name="theme-color" content="#060607">
+  <meta name="description" content="Museo de subs y VIPs del chat de leanmto. Reclama tu retrato con !museo.">
+  <title>Museo de leanmto — Galería del chat</title>
   <style>
-    :root { --bg:#0d0e0f; --bg2:#151617; --panel:#1b1d1e; --ink:#e2e2df; --dim:#8d9091; --gold:#b5b8b8; --line:#393c3e; --red:#757b7e; }
-    * { box-sizing:border-box } html { scroll-behavior:smooth }
-    body { margin:0; background:var(--bg); color:var(--ink); font-family:Georgia,'Times New Roman',serif; }
-    ::selection { background:var(--gold); color:#0d0e0f }
-    a { color:inherit; text-decoration:none } button,input { font:inherit }
-    button { cursor:pointer }
-    button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var(--gold); outline-offset:5px }
-    .grain { position:fixed;inset:0;pointer-events:none;opacity:.14;z-index:20;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.2' filter='url(%23n)'/%3E%3C/svg%3E") }
-    .mast { display:flex;align-items:center;justify-content:space-between;gap:16px;padding:21px clamp(20px,5vw,80px);border-bottom:1px solid #2d3032; }
-    .brand { font-size:25px;font-weight:bold;letter-spacing:-.07em }
-    .brand i { font-size:15px;font-style:normal;color:var(--gold);margin:0 6px }
-    .small { color:var(--dim);font:10px Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase }
-    .mast .small a { color:var(--gold);border-bottom:1px solid var(--gold) }
-    .hero { min-height:510px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding:80px 20px 100px;border-bottom:1px solid #2d3032;background:radial-gradient(ellipse at center,#26282a 0%,#17191b 53%,#0d0e0f 83%);overflow:hidden }
-    .hero::before,.hero::after { content:'✧';position:absolute;top:40%;color:#565a5c;font-size:40px } .hero::before { left:10% }.hero::after { right:10% }
-    .overline { color:var(--gold);font:11px Arial,sans-serif;letter-spacing:.3em; }
-    .ornament { margin:28px 0 15px;font-size:30px;color:var(--gold) }
-    h1 { font-size:clamp(63px,11vw,150px);letter-spacing:-.08em;font-weight:normal;line-height:.87;margin:0;text-shadow:0 12px 40px #0008 }
-    h1 em { display:block;font-size:.27em;letter-spacing:.06em;font-style:normal;margin-top:29px;color:var(--gold) }
-    .intro { max-width:640px;margin:30px auto 20px;color:#b0b2b2;font-size:clamp(15px,1.45vw,19px);line-height:1.7;font-style:italic }
-    .instructions { margin-top:10px;border:1px solid #45494a;padding:16px 22px;max-width:720px;background:#0d0e10c9;line-height:1.65;color:#c8cbca; }
-    .instructions code { font:600 15px Consolas,monospace;color:#e1e2e0; }
-    main { max-width:1600px;margin:auto }
-    .collection { padding:90px clamp(20px,5vw,80px) 85px; }
-    .section-top { display:flex;justify-content:space-between;align-items:end;gap:20px;border-bottom:1px solid #44484a;padding-bottom:28px; }
-    .eyebrow { font:10px Arial,sans-serif;color:var(--gold);letter-spacing:.25em;margin:0 0 13px; }
-    h2 { font-size:clamp(36px,5vw,63px);font-weight:normal;letter-spacing:-.045em;margin:0 }
-    h2 i { color:var(--gold);font-weight:normal }
-    .tools { display:flex;flex-direction:column;gap:16px;align-items:end }
-    #counter { font:11px Arial,sans-serif;letter-spacing:.15em;color:var(--dim) }
-    .search { border-bottom:1px solid #676b6e;display:flex;gap:10px;align-items:center;width:min(260px,100%);padding:0 0 9px }
-    .search input { background:none;color:var(--ink);border:0;outline:0;width:100%;font:13px Arial,sans-serif }
-    .search input::placeholder { color:#86898a }
-    .group-label { margin:65px 0 7px;display:flex;gap:17px;align-items:center;color:var(--gold);font:11px Arial,sans-serif;letter-spacing:.22em }
-    .group-label::after { content:'';height:1px;background:#3b3e40;flex:1 }
-    .grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:42px clamp(20px,4.5vw,70px);padding-top:27px; }
-    .card { min-width:0; padding:0;background:transparent;border:0;text-align:left;color:inherit; }
-    .frame { border:9px ridge #484d50;padding:10px;background:linear-gradient(130deg,#696e70 0%,#252829 25%,#4f5456 49%,#1b1e20 72%,#83888b 100%);box-shadow:7px 12px 0 #060708,0 20px 45px #0007,inset 0 0 0 2px #23272a;transition:transform .25s,box-shadow .25s; }
-    .card:hover .frame,.card:focus-visible .frame { transform:translateY(-6px);box-shadow:7px 20px 0 #060708,0 28px 45px #000a,inset 0 0 0 2px #23272a }
-    .card.vip .frame { border-color:#85898c;background:linear-gradient(135deg,#8a8e90,#292d30 25%,#5d6265 52%,#242729 70%,#a0a5a8) }
-    .mat { background:#090a0b;padding:12px;box-shadow:inset 0 0 0 1px #4c5053 }
-    .art { background:radial-gradient(ellipse at 50% 20%,#4a4d50,#242627 50%,#0a0b0d 100%);aspect-ratio:4/5;position:relative;overflow:hidden;display:grid;place-items:center }
-    .art::after { content:'';position:absolute;inset:0;box-shadow:inset 0 0 80px #000b;pointer-events:none }
-    .art img { height:100%;width:100%;object-fit:cover;position:absolute;inset:0; }
-    .initial { color:#a8adae;opacity:.8;font-size:clamp(85px,14vw,190px) }
-    .art .art-tag { position:absolute;bottom:10px;right:10px;background:#151719e6;color:#d8dada;padding:7px 9px;font:9px Arial,sans-serif;letter-spacing:.13em;z-index:2 }
-    .plaque { display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:20px 2px 0 }
-    .plaque strong { font-size:clamp(18px,2vw,26px);font-weight:normal;overflow-wrap:anywhere }
-    .plaque small { color:var(--gold);font:10px Arial,sans-serif;letter-spacing:.1em;white-space:nowrap }
-    .empty { padding:40px 15px 5px;font-size:18px;font-style:italic;color:#a5a7a7;line-height:1.65;text-align:center }
-    .notice { margin:24px 0 0;color:#cfd0d0;background:#242629;border:1px solid #4b4e51;padding:14px 18px;font:13px Arial,sans-serif;line-height:1.5 }
-    .footer { padding:32px clamp(20px,5vw,80px);border-top:1px solid #2d3032;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap }
-    .footer a { color:var(--gold) }
-    dialog { box-shadow:0 25px 70px #000c;background:linear-gradient(150deg,#292b2d,#111314);color:var(--ink);border:1px solid var(--gold);padding:55px 24px 42px;width:min(490px,calc(100% - 30px));text-align:center }
-    dialog::backdrop { background:#050607df;backdrop-filter:blur(5px) }
-    .close { position:absolute;right:12px;top:12px;background:none;color:var(--ink);border:0;font:25px Arial,sans-serif }
-    .modal-image { height:120px;width:120px;border:5px ridge var(--gold);object-fit:cover;display:none;margin:0 auto 20px }
-    #modal-name { font-size:clamp(31px,6vw,48px);overflow-wrap:anywhere;margin:12px 0 25px }
-    #modal-quote { font-size:clamp(20px,4vw,27px);line-height:1.5;font-style:italic;margin:18px 0 28px;white-space:pre-wrap;overflow-wrap:anywhere }
-    .modal-role { color:var(--gold);letter-spacing:.2em;font:10px Arial,sans-serif }
-    .rule { width:70px;height:1px;background:var(--gold);margin:auto }
-    @media(max-width:920px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero::before,.hero::after{display:none}}
-    @media(max-width:590px){.mast{padding:18px 20px}.mast .small{font-size:8px}.hero{min-height:560px;padding:70px 20px 85px}.section-top{display:block}.tools{align-items:start;margin-top:20px}.collection{padding-top:65px}.grid{gap:37px 15px}.frame{border-width:5px;padding:5px;box-shadow:3px 7px 0 #060708}.mat{padding:5px}.plaque{flex-direction:column;padding-top:14px;gap:7px}.plaque strong{font-size:17px}.plaque small{font-size:9px}.art .art-tag{font-size:8px;padding:4px;bottom:5px;right:5px}.initial{font-size:85px}.group-label{margin-top:40px}}
-    @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+    :root {
+      color-scheme: dark;
+      --white: #e0dfdd;
+      --muted: #a4a3a0;
+      --silver: #8c8985;
+      --border: #444444;
+      --black: #09090a;
+    }
+    * { box-sizing: border-box; }
+    html { min-height: 100%; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #050506;
+      color: var(--white);
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: #070708 url('./fondo-museo.png') center center / cover no-repeat;
+      pointer-events: none;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(to bottom, rgba(0,0,0,.22), transparent 28%, transparent 77%, rgba(0,0,0,.10));
+      pointer-events: none;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, input:focus-visible, a:focus-visible {
+      outline: 2px solid #dedede;
+      outline-offset: 4px;
+    }
+    [hidden] { display: none !important; }
+    .scene {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      isolation: isolate;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 23px clamp(22px,4vw,68px) 0;
+      font: 10px/1.5 Arial,Helvetica,sans-serif;
+      letter-spacing: .23em;
+      text-transform: uppercase;
+      color: #b0aeac;
+    }
+    .topbar a { transition: color .2s; }
+    .topbar a:hover { color: #fff; }
+    .topbar .right { text-align: right; }
+    .title-area {
+      padding: clamp(12px,2.5vh,24px) 18px 0;
+      text-align: center;
+      text-shadow: 0 2px 20px #000;
+    }
+    .pretitle {
+      margin: 0 0 10px;
+      font: 10px Arial,Helvetica,sans-serif;
+      letter-spacing: .35em;
+      color: #b1aeaa;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(35px,4.9vw,69px);
+      line-height: 1.08;
+      font-weight: 400;
+      letter-spacing: .115em;
+      text-transform: uppercase;
+    }
+    .sub-title {
+      margin: 13px 0 0;
+      font: 11px/1.6 Arial,Helvetica,sans-serif;
+      letter-spacing: .21em;
+      color: #c5c2be;
+      text-transform: uppercase;
+    }
+    .sub-title code {
+      font: 600 12px Consolas,Monaco,monospace;
+      letter-spacing: .04em;
+      color: #f0f0f0;
+    }
+    .scene-tools {
+      width: min(1130px,calc(100% - 70px));
+      margin: clamp(15px,2.5vh,30px) auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+      font: 10px Arial,Helvetica,sans-serif;
+      letter-spacing: .21em;
+      text-transform: uppercase;
+      color: #aaa7a3;
+    }
+    .scene-tools .count { white-space: nowrap; padding-bottom: 9px; }
+    .searchbox {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      border-bottom: 1px solid #88837d;
+      padding: 0 0 9px;
+      width: min(230px,50vw);
+    }
+    .searchbox svg { flex: 0 0 auto; opacity: .8; }
+    .searchbox input {
+      width: 100%;
+      background: transparent;
+      color: #dedbd7;
+      border: 0;
+      outline: none;
+      font: 12px Arial,Helvetica,sans-serif;
+      letter-spacing: .06em;
+    }
+    .searchbox input::placeholder { color: #9e9b97; opacity: 1; }
+    .wall-space {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 13px 60px 15px;
+      position: relative;
+      min-height: 290px;
+    }
+    .gallery {
+      width: min(1120px,100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(22px,4.8vw,75px);
+    }
+    .portrait-button {
+      width: min(29%,290px);
+      min-width: 0;
+      padding: 0;
+      color: inherit;
+      border: none;
+      background: none;
+      text-align: center;
+      flex: 0 1 auto;
+      transition: transform .28s ease;
+      position: relative;
+    }
+    .portrait-button:hover,
+    .portrait-button:focus-visible { transform: translateY(-7px); }
+    .portrait-button::before {
+      content: '';
+      position: absolute;
+      inset: -48px -55px 37px;
+      pointer-events: none;
+      z-index: -1;
+      background: radial-gradient(ellipse at 50% 40%,rgba(238,235,227,.15),transparent 65%);
+    }
+    .frame {
+      position: relative;
+      border: clamp(5px,.85vw,10px) ridge #5c5b59;
+      padding: clamp(5px,.65vw,8px);
+      background: linear-gradient(130deg,#686766,#1c1c1d 20%,#484848 42%,#121214 67%,#797773 100%);
+      box-shadow: 0 13px 13px #000c,0 29px 44px #000b,inset 0 0 1px 1px #b1adab;
+    }
+    .portrait-button.vip .frame {
+      border-color: #979390;
+      background: linear-gradient(140deg,#a7a39c,#353435 24%,#898783 48%,#262527 76%,#a7a39e);
+    }
+    .mat {
+      padding: clamp(5px,.7vw,9px);
+      background: #0a0a0c;
+      border: 1px solid #62605e;
+      box-shadow: inset 0 0 0 2px #161616;
+    }
+    .art {
+      width: 100%;
+      aspect-ratio: 4/5;
+      max-height: min(37svh,380px);
+      background: radial-gradient(ellipse at 50% 32%,#333435 0%,#0a0b0d 76%);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .art::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 25px #000b; }
+    .art img { width:100%; height:100%; object-fit:cover; display:block; filter: grayscale(.82) contrast(1.06) brightness(.9); position: absolute; inset: 0; transition: filter .3s; }
+    .portrait-button:hover .art img { filter: grayscale(.42) contrast(1.06); }
+    .initial {
+      font: normal clamp(60px,10vw,130px) Georgia,serif;
+      color: #a1a09e;
+      opacity: .75;
+      text-shadow: 0 7px 20px #000;
+    }
+    .plaque {
+      margin: clamp(10px,1.5vh,18px) auto 0;
+      width: min(94%,250px);
+      min-height: 49px;
+      padding: 9px 11px 8px;
+      background: linear-gradient(#383737,#161617 70%);
+      border: 1px solid #555453;
+      box-shadow: 0 9px 17px #0009,inset 0 1px #77716e55;
+    }
+    .plaque .name {
+      display: block;
+      font-size: clamp(15px,1.7vw,21px);
+      line-height: 1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #e6e3de;
+    }
+    .plaque .role {
+      display: block;
+      margin-top: 6px;
+      font: 9px Arial,Helvetica,sans-serif;
+      letter-spacing: .23em;
+      color: #9e9d9c;
+    }
+    .room-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 19px;
+      padding: 0 20px clamp(34px,5vh,60px);
+      text-shadow: 0 4px 15px #000;
+      color: #d2cecb;
+      font: 10px Arial,Helvetica,sans-serif;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .room-controls button {
+      width: 41px;
+      height: 41px;
+      background: #0d0d0ecb;
+      border: 1px solid #77716e;
+      color: #ddd9d6;
+      font-size: 28px;
+      line-height: 1;
+      padding: 0 0 5px;
+      transition: background .2s,border-color .2s;
+    }
+    .room-controls button:not(:disabled):hover { background: #333233; border-color: #bdb7b2; }
+    .room-controls button:disabled { opacity:.35; cursor: default; }
+    .room-controls .page-label { min-width: 115px; text-align: center; }
+    .empty-room {
+      text-align: center;
+      max-width: 440px;
+      background: #09090bc9;
+      border: 1px solid #56514e;
+      padding: 28px 27px;
+      box-shadow: 0 12px 30px #0009;
+    }
+    .empty-room p { margin: 0; font-size: 21px; line-height: 1.5; }
+    .empty-room small { display: block; font: 12px/1.8 Arial,sans-serif; color: #aaa7a3; margin-top: 14px; }
+    .notice { position: fixed; bottom: 15px; left: 15px; right: 15px; margin: 0 auto; z-index: 10; width: min(470px,calc(100% - 30px)); background: #171718; border: 1px solid #6e5f5b; text-align:center; padding: 9px 13px; font: 12px/1.5 Arial,sans-serif; color: #d2d0ce; }
+    dialog {
+      position: fixed;
+      width: min(660px,calc(100% - 30px));
+      max-height: min(86svh,850px);
+      padding: 0;
+      border: 1px solid #66615e;
+      color: #e5e1dc;
+      background: #0c0c0eea;
+      box-shadow: 0 35px 80px #000e;
+      overflow: auto;
+      text-align: center;
+    }
+    dialog::backdrop { background: #000b; backdrop-filter: blur(7px); }
+    .dialog-inner { padding: clamp(26px,4vw,44px); }
+    .close {
+      position: absolute;
+      right: 13px;
+      top: 13px;
+      border: 1px solid #68635e;
+      background: #0c0c0d;
+      color: #d5d2cf;
+      width: 35px;
+      height: 35px;
+      font: 24px Arial,sans-serif;
+      line-height: 1;
+    }
+    .modal-image {
+      width: 118px;
+      height: 145px;
+      display: block;
+      object-fit: cover;
+      border: 5px ridge #6e6b67;
+      margin: 0 auto 20px;
+      filter: grayscale(.55);
+    }
+    .modal-label { font: 10px Arial,sans-serif; letter-spacing: .3em; color: #aaa5a1; }
+    #modal-name { font: normal clamp(30px,5vw,45px)/1.1 Georgia,serif; margin: 11px 0 19px; word-break: break-word; }
+    .rule { height: 1px; width: 80px; background: #74706c; margin: auto; }
+    blockquote { margin: 25px auto; font-size: clamp(20px,3vw,27px); line-height: 1.45; font-style: italic; white-space: pre-wrap; overflow-wrap: anywhere; }
+    #modal-date { font: 10px Arial,sans-serif; letter-spacing: .16em; color: #999490; }
+    @media(max-width: 920px) {
+      .portrait-button { width: min(40%,285px); }
+      .gallery { gap: 30px; }
+      .wall-space { padding-left: 35px; padding-right: 35px; }
+    }
+    @media(max-width: 590px) {
+      .topbar { padding: 18px 18px 0; letter-spacing: .10em; font-size: 9px; }
+      .title-area { padding: 27px 14px 0; }
+      h1 { font-size: clamp(28px,8vw,43px); letter-spacing: .065em; }
+      .pretitle { font-size: 9px; }
+      .sub-title { font-size: 10px; letter-spacing: .10em; }
+      .scene-tools { width: calc(100% - 42px); margin-top: 22px; align-items: center; }
+      .scene-tools .count { font-size: 9px; letter-spacing:.05em; }
+      .searchbox { width: min(185px,50vw); }
+      .wall-space { padding-left: 30px; padding-right: 30px; min-height: 300px; }
+      .portrait-button { width: min(72vw,260px); }
+      .gallery { gap: 0; }
+      .art { max-height: 38svh; }
+      .plaque .name { font-size: 20px; }
+      .room-controls { padding-bottom: clamp(30px,6vh,60px); }
+      body::before { background-position: center center; }
+    }
+    @media(max-height: 680px) and (min-width: 591px) {
+      .title-area { padding-top: 8px; }
+      h1 { font-size: clamp(30px,4vw,51px); }
+      .scene-tools { margin-top: 12px; }
+      .wall-space { padding-top: 5px; min-height: 210px; }
+      .art { max-height: 34svh; }
+      .room-controls { padding-bottom: 16px; }
+    }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { transition: none !important; scroll-behavior: auto !important; } }
   </style>
 </head>
 <body>
-<div class="grain" aria-hidden="true"></div>
-<header class="mast"><span class="small" style="margin-left:auto">Archivo comunitario · <a href="https://kick.com/leanmto" target="_blank" rel="noopener noreferrer">Kick / leanmto ↗</a></span></header>
-<main id="inicio">
-  <section class="hero" aria-labelledby="title">
-    <div class="overline">ARCHIVO DE LEYENDAS · 2026</div><div class="ornament" aria-hidden="true">✧</div>
-    <h1 id="title">MUSEO<em>DE LOS SUBS & VIPS</em></h1>
-    <p class="intro">Un lugar para los que dejaron su marca en el chat de leanmto.<br>Cada retrato, un nombre. Cada nombre, una historia.</p>
-    <div class="instructions">Para reclamar tu retrato, escribí en el chat de <strong>leanmto</strong>:<br><code>!museo La frase que quieras dejar para siempre</code><br><span class="small">Solo subs y VIPs · También podés usar !museo solo</span></div>
-  </section>
-  <section class="collection" id="coleccion">
-    <div class="section-top"><div><p class="eyebrow">001 / EXPOSICIÓN PERMANENTE</p><h2>Los <i>inmortalizados.</i></h2></div><div class="tools"><span id="counter" aria-live="polite">CARGANDO REGISTROS...</span><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar un nombre..." aria-label="Buscar un usuario"></label></div></div>
-    <p id="notice" class="notice" hidden></p>
-    <div class="group-label" id="vip-title" hidden>SALA I · VIPS</div><div class="grid" id="vip-gallery"></div>
-    <div class="group-label" id="sub-title" hidden>SALA II · SUBS</div><div class="grid" id="sub-gallery"></div>
-    <p id="empty" class="empty">Cargando retratos...</p>
-  </section>
-</main>
-<footer class="footer small"><span>MUSEO DE LEANMTO · COLECCIÓN DIGITAL</span><span>Escribí <strong>!museo</strong> en <a href="https://kick.com/leanmto" target="_blank" rel="noopener noreferrer">Kick ↗</a></span></footer>
-<dialog id="portrait-dialog" aria-labelledby="modal-name"><button class="close" id="modal-close" aria-label="Cerrar ventana">×</button><img id="modal-image" class="modal-image" alt=""><span id="modal-role" class="modal-role"></span><h2 id="modal-name"></h2><div class="rule"></div><blockquote id="modal-quote"></blockquote><span class="small" id="modal-date"></span></dialog>
-<!-- Para conservar tus subs manuales, este archivo sigue leyendo tu subs.js anterior. -->
+<div class="scene">
+  <header class="topbar">
+    <span>Archivo comunitario / 2026</span>
+    <a class="right" href="https://kick.com/leanmto" target="_blank" rel="noopener noreferrer">Kick — leanmto ↗</a>
+  </header>
+
+  <div class="title-area">
+    <p class="pretitle">COLECCIÓN PERMANENTE</p>
+    <h1>Museo de subs</h1>
+    <p class="sub-title">Subs &amp; VIPs · Escribí <code>!museo tu frase</code> en el chat para reclamar tu cuadro</p>
+  </div>
+
+  <div class="scene-tools">
+    <span class="count" id="counter" aria-live="polite">Cargando retratos…</span>
+    <label class="searchbox">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+      <input type="search" id="search" aria-label="Buscar usuario o frase" placeholder="Buscar un nombre…" autocomplete="off">
+    </label>
+  </div>
+
+  <main class="wall-space" id="gallery-main">
+    <div id="gallery" class="gallery" aria-live="polite"></div>
+    <div id="empty-room" class="empty-room" hidden>
+      <p id="empty-heading">Aún no hay retratos en esta sala.</p>
+      <small id="empty-detail">Los subs y VIPs pueden entrar escribiendo !museo en el chat de leanmto.</small>
+    </div>
+  </main>
+
+  <nav class="room-controls" aria-label="Navegar por los retratos">
+    <button id="previous" aria-label="Retratos anteriores" type="button">‹</button>
+    <span class="page-label" id="page-label">SALA 01 / 01</span>
+    <button id="next" aria-label="Retratos siguientes" type="button">›</button>
+  </nav>
+</div>
+
+<p class="notice" id="notice" role="status" hidden>No se pudo actualizar el museo en vivo; se muestran los registros disponibles.</p>
+<dialog id="portrait-dialog" aria-labelledby="modal-name">
+  <button class="close" id="modal-close" type="button" aria-label="Cerrar">×</button>
+  <div class="dialog-inner">
+    <img class="modal-image" id="modal-image" alt="Retrato" hidden>
+    <div class="modal-label" id="modal-role"></div>
+    <h2 id="modal-name"></h2>
+    <div class="rule" aria-hidden="true"></div>
+    <blockquote id="modal-quote"></blockquote>
+    <div id="modal-date"></div>
+  </div>
+</dialog>
+<!-- Conserva tu subs.js actual en el repositorio; no hace falta reemplazarlo. -->
 <script src="./subs.js"></script>
 <script>
-  // API de leanmto ya conectada. No modificar salvo que cambie la direccion del Worker.
   const API_URL = 'https://museo-leanmto-api.museo-leanmto.workers.dev';
-
-  const $ = (id) => document.getElementById(id);
-  const safeUrl = (value) => { try { const u = new URL(String(value), location.href); return ['https:','http:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } };
-  const manual = (typeof SUBS !== 'undefined' && Array.isArray(SUBS) ? SUBS : []).map((m,i) => ({
-    id: `manual-${i}`, username: String(m.usuario||'Anónimo'), photo: m.foto||'', quote: m.frase||'Sin frase',
-    role: /vip/i.test(String(m.rol||m.tipo||'')) ? 'vip' : 'sub', claimed_at: m.fecha||'', manual:true
-  }));
-  let items = [...manual];
-  function imageOrInitial(host,src,name) {
-    const initial = document.createElement('span'); initial.className='initial'; initial.textContent=(name||'?').slice(0,1).toUpperCase();host.append(initial);
-    const url=safeUrl(src);if(!url)return;
-    const img=document.createElement('img'); img.alt=`Retrato de ${name}`; img.loading='lazy'; img.referrerPolicy='no-referrer';
-    img.addEventListener('load',()=>{initial.hidden=true});img.addEventListener('error',()=>img.remove());img.src=url;host.append(img);
-  }
-  function card(m) {
-    const b=document.createElement('button');b.type='button';b.className='card'+(m.role==='vip'?' vip':'');b.setAttribute('aria-label',`Ver el retrato de ${m.username}`);
-    const frame=document.createElement('div');frame.className='frame';const mat=document.createElement('div');mat.className='mat';const art=document.createElement('div');art.className='art';imageOrInitial(art,m.photo,m.username);
-    const tag=document.createElement('span');tag.className='art-tag';tag.textContent=m.role==='vip'?'VIP':'SUB';art.append(tag);mat.append(art);frame.append(mat);
-    const plaque=document.createElement('div');plaque.className='plaque';const n=document.createElement('strong');n.textContent='@'+m.username;const s=document.createElement('small');s.textContent=m.role==='vip'?'✦ VIP':'✧ SUB';plaque.append(n,s);b.append(frame,plaque);
-    b.addEventListener('click',()=>openCard(m));return b;
-  }
-  function openCard(m) {
-    $('modal-role').textContent=m.role==='vip'?'SALA VIP · ARCHIVO PERMANENTE':'SALA DE SUBS · ARCHIVO PERMANENTE';$('modal-name').textContent='@'+m.username;
-    $('modal-quote').textContent='“'+m.quote+'”';const parsed=Date.parse(m.claimed_at);$('modal-date').textContent=m.claimed_at ? `INGRESO · ${Number.isFinite(parsed) ? new Date(parsed).toLocaleDateString('es-AR',{year:'numeric',month:'long',day:'numeric'}) : m.claimed_at}` : 'UN LEGADO DEL CHAT';
-    const img=$('modal-image'),url=safeUrl(m.photo);img.style.display='none';img.removeAttribute('src');if(url){img.src=url;img.onload=()=>{img.style.display='block'};img.onerror=()=>{img.style.display='none'}};
-    $('portrait-dialog').showModal();
-  }
-  $('modal-close').onclick=()=>$('portrait-dialog').close();$('portrait-dialog').addEventListener('click',e=>{if(e.target===$('portrait-dialog'))e.target.close()});
-  function render() {
-    const term=$('search').value.trim().toLocaleLowerCase();const shown=items.filter(m=>m.username.toLocaleLowerCase().includes(term)||m.quote.toLocaleLowerCase().includes(term));
-    const vips=shown.filter(x=>x.role==='vip');const subs=shown.filter(x=>x.role!=='vip');
-    $('vip-title').hidden=!vips.length;$('sub-title').hidden=!subs.length;
-    $('vip-gallery').replaceChildren(...vips.map(card));$('sub-gallery').replaceChildren(...subs.map(card));
-    $('counter').textContent=`${items.length} RETRATOS EN EL ARCHIVO`;
-    $('empty').hidden=shown.length>0;$('empty').textContent=items.length===0?'La galería está vacía. ¡Sé el primero en escribir !museo en el chat!':'No se encontraron retratos con ese nombre.';
-  }
-  $('search').addEventListener('input',render);
-  async function refresh() {
-    if(!API_URL.startsWith('https://')) {render();return;}
+  const $ = id => document.getElementById(id);
+  const safeUrl = value => {
     try {
-      const r=await fetch(API_URL.replace(/\/$/,'')+'/api/members',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);
-      const data=await r.json();if(!Array.isArray(data.members))throw new Error('Respuesta inesperada');
-      const fromKick=data.members.map(m=>({id:m.user_id,username:String(m.username||'Anónimo'),photo:m.photo||'',quote:String(m.quote||'Sin frase'),role:m.role==='vip'?'vip':'sub',claimed_at:m.claimed_at||''}));
-      // Si un usuario reclamó por Kick, su cuadro reemplaza al manual con el mismo nombre.
-      const realNames=new Set(fromKick.map(x=>x.username.toLocaleLowerCase()));items=[...fromKick,...manual.filter(x=>!realNames.has(x.username.toLocaleLowerCase()))];
-      $('notice').hidden=true;render();
-    } catch(err) { $('notice').hidden=false;$('notice').textContent='El museo no pudo conectarse al registro en vivo. Los cuadros manuales siguen disponibles. Revisá la URL de Cloudflare o la consola.';render(); console.error('Museo API',err); }
+      const u = new URL(String(value || ''), location.href);
+      return (u.protocol === 'https:' || u.protocol === 'http:') ? u.href : '';
+    } catch { return ''; }
+  };
+
+  const manual = (typeof SUBS !== 'undefined' && Array.isArray(SUBS) ? SUBS : []).map((m,i) => ({
+    id: `manual-${i}`,
+    username: String(m.usuario || m.username || 'Anónimo'),
+    photo: m.foto || m.photo || '',
+    quote: String(m.frase || m.quote || 'Sin frase'),
+    role: /vip/i.test(String(m.rol || m.tipo || '')) ? 'vip' : 'sub',
+    claimed_at: m.fecha || '',
+    manual: true
+  }));
+  let members = [...manual];
+  let page = 0;
+  let previousPageSize = 0;
+
+  function roomSize() {
+    const w = window.innerWidth;
+    return w < 591 ? 1 : (w < 921 ? 2 : 3);
   }
-  render();refresh();setInterval(refresh,30000);
+  function portraitImage(host, src, name) {
+    const initial = document.createElement('span');
+    initial.className = 'initial';
+    initial.textContent = String(name || '?').slice(0,1).toUpperCase();
+    host.append(initial);
+    const url = safeUrl(src);
+    if (!url) return;
+    const img = document.createElement('img');
+    img.alt = `Retrato de ${name}`;
+    img.loading = 'lazy';
+    img.referrerPolicy = 'no-referrer';
+    img.addEventListener('load', () => initial.hidden = true);
+    img.addEventListener('error', () => img.remove());
+    img.src = url;
+    host.append(img);
+  }
+  function makeCard(m, index) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'portrait-button' + (m.role === 'vip' ? ' vip' : '');
+    button.setAttribute('aria-label', `Abrir el retrato de ${m.username}`);
+
+    const frame = document.createElement('div'); frame.className = 'frame';
+    const mat = document.createElement('div'); mat.className = 'mat';
+    const art = document.createElement('div'); art.className = 'art';
+    portraitImage(art, m.photo, m.username);
+    mat.append(art); frame.append(mat);
+
+    const plaque = document.createElement('div'); plaque.className = 'plaque';
+    const name = document.createElement('strong'); name.className = 'name'; name.textContent = '@' + m.username;
+    const role = document.createElement('span'); role.className = 'role';
+    role.textContent = (m.role === 'vip' ? 'VIP' : 'SUB') + '  ·  Nº ' + String(index+1).padStart(3,'0');
+    plaque.append(name, role); button.append(frame, plaque);
+    button.addEventListener('click', () => openPortrait(m));
+    return button;
+  }
+  function openPortrait(m) {
+    const modal = $('portrait-dialog');
+    $('modal-role').textContent = m.role === 'vip' ? 'ARCHIVO · VIP' : 'ARCHIVO · SUB';
+    $('modal-name').textContent = '@' + m.username;
+    $('modal-quote').textContent = '“' + m.quote + '”';
+    const date = Date.parse(m.claimed_at);
+    $('modal-date').textContent = m.claimed_at
+      ? 'INGRESO · ' + (Number.isFinite(date) ? new Date(date).toLocaleDateString('es-AR',{year:'numeric',month:'long',day:'numeric'}) : m.claimed_at)
+      : 'ARCHIVO DE LA COMUNIDAD';
+    const img = $('modal-image');
+    img.hidden = true;
+    img.removeAttribute('src');
+    const url = safeUrl(m.photo);
+    if (url) {
+      img.onload = () => { img.hidden = false; };
+      img.onerror = () => { img.hidden = true; };
+      img.src = url;
+    }
+    if (!modal.open) modal.showModal();
+  }
+  function visibleMembers() {
+    const query = $('search').value.trim().toLocaleLowerCase();
+    return members.filter(m => (m.username + ' ' + m.quote).toLocaleLowerCase().includes(query));
+  }
+  function render() {
+    const all = visibleMembers();
+    const size = roomSize();
+    const totalPages = Math.max(1, Math.ceil(all.length / size));
+    page = Math.max(0, Math.min(page, totalPages - 1));
+    const start = page * size;
+    const shown = all.slice(start, start + size);
+    $('gallery').replaceChildren(...shown.map((m,i) => makeCard(m,start+i)));
+    $('counter').textContent = `${members.length} RETRATO${members.length===1?'':'S'} EN EL MUSEO`;
+    $('page-label').textContent = `SALA ${String(page+1).padStart(2,'0')} / ${String(totalPages).padStart(2,'0')}`;
+    $('previous').disabled = page === 0;
+    $('next').disabled = page === totalPages - 1;
+    $('gallery').hidden = shown.length === 0;
+    $('empty-room').hidden = shown.length !== 0;
+    if (!shown.length) {
+      $('empty-heading').textContent = members.length ? 'No encontramos ese retrato.' : 'Esta pared espera sus primeros cuadros.';
+      $('empty-detail').textContent = members.length ? 'Probá buscar otro usuario o frase.' : 'Escribí !museo tu frase en el chat de leanmto para reclamar tu espacio.';
+    }
+  }
+  $('search').addEventListener('input', () => { page=0; render(); });
+  $('previous').addEventListener('click', () => { if (page>0) { page--; render(); } });
+  $('next').addEventListener('click', () => { page++; render(); });
+  $('modal-close').addEventListener('click', () => $('portrait-dialog').close());
+  $('portrait-dialog').addEventListener('click', event => { if (event.target === $('portrait-dialog')) event.target.close(); });
+  window.addEventListener('resize', () => {
+    const size = roomSize();
+    if (size !== previousPageSize) { previousPageSize = size; page = 0; render(); }
+  });
+  document.addEventListener('keydown', e => {
+    if ($('portrait-dialog').open || e.target instanceof HTMLInputElement) return;
+    if (e.key === 'ArrowLeft' && !$('previous').disabled) { page--; render(); }
+    if (e.key === 'ArrowRight' && !$('next').disabled) { page++; render(); }
+  });
+  async function refresh() {
+    try {
+      const response = await fetch(API_URL + '/api/members', {cache:'no-store'});
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const data = await response.json();
+      if (!Array.isArray(data.members)) throw new Error('Respuesta de API no válida');
+      const kick = data.members.map(m => ({
+        id: String(m.user_id || ''),
+        username: String(m.username || 'Anónimo'),
+        photo: m.photo || '',
+        quote: String(m.quote || 'Sin frase'),
+        role: m.role === 'vip' ? 'vip' : 'sub',
+        claimed_at: m.claimed_at || '',
+        manual: false
+      }));
+      const kickNames = new Set(kick.map(m => m.username.toLocaleLowerCase()));
+      members = [...kick, ...manual.filter(m => !kickNames.has(m.username.toLocaleLowerCase()))];
+      $('notice').hidden = true;
+      render();
+    } catch(error) {
+      // Si la API falla, no se borran de la pantalla los usuarios cargados.
+      $('notice').hidden = false;
+      render();
+      console.error('Error al actualizar los retratos:',error);
+    }
+  }
+  previousPageSize = roomSize();
+  render();
+  refresh();
+  setInterval(refresh,30000);
 </script>
 </body>
 </html>
